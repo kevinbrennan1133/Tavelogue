@@ -52,24 +52,4 @@ public class Document: NSManagedObject {
         self.modifiedDate = Date(timeIntervalSinceNow: 0)
         self.category = category
     }
-    
-    func getName() -> String? {
-        return name
-    }
-    
-    func getSize() -> Int64 {
-        return size
-    }
-    
-    func getContent() -> String? {
-        return content
-    }
-    
-    func getModifiedDate() -> Date? {
-        return modifiedDate
-    }
-    
-    func getCategory() -> Category? {
-        return category
-    }
 }

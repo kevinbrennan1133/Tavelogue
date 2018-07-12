@@ -63,7 +63,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                     return
                 }
                 
-                if (categoryName == category.getName()) {
+                if (categoryName == category.name) {
                     // Nothing to change, new name is old name.
                     // Do this check before checking that categoryExists,
                     // otherwise if category name doesn't change error about already existing will occur.

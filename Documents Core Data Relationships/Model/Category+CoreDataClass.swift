@@ -22,12 +22,4 @@ public class Category: NSManagedObject {
         self.init(entity: Category.entity(), insertInto: managedContext)
         self.name = name
     }
-
-    func getName() -> String? {
-        return name
-    }
-    
-    func getDocuments() -> NSSet? {
-        return documents
-    }
 }

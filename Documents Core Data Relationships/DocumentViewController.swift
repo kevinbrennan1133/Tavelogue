@@ -21,9 +21,9 @@ class DocumentViewController: UIViewController {
         title = ""
         
         if let document = document {
-            let name = document.getName()
+            let name = document.name
             nameTextField.text = name
-            contentTextView.text = document.getContent()
+            contentTextView.text = document.content
             title = name
         }
     }
