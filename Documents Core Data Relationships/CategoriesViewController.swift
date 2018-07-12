@@ -34,11 +34,16 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Submit", style: UIAlertActionStyle.default, handler: {
             (alertAction) -> Void in
-            if let textField = alert.textFields?[0], let name = textField.text, name != "" {
+            if let textField = alert.textFields?[0], let name = textField.text {
                 let categoryName = name.trimmingCharacters(in: .whitespaces)
+                if (categoryName == "") {
+                    self.alertNotifyUser(message: "Category not created.\nThe name must contain a value.")
+                    return
+                }
                 self.addCategory(name: categoryName)
             } else {
-                self.alertNotifyUser(message: "Category not created.\nThe name must contain a value.")
+                self.alertNotifyUser(message: "Category not created.\nThe name is not accessible.")
+                return
             }
             
         }))
@@ -93,10 +98,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func alertNotifyUser(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) {
-            (alertAction) -> Void in
-            print("OK selected")
-        })
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
 
         self.present(alert, animated: true, completion: nil)
     }

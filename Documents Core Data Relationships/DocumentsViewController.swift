@@ -35,6 +35,13 @@ class DocumentsViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func alertNotifyUser(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func updateDocumentsArray() {
         documents = category?.documents?.sortedArray(using: [NSSortDescriptor(key: "name", ascending: true)]) as? [Document] ?? [Document]()
     }
@@ -56,7 +63,7 @@ class DocumentsViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.documents.remove(at: indexPath.row)
                 documentsTableView.deleteRows(at: [indexPath], with: .automatic)
             } catch {
-                print("Delete failed.")
+                alertNotifyUser(message: "Delete failed.")
                 documentsTableView.reloadData()
             }
         }
