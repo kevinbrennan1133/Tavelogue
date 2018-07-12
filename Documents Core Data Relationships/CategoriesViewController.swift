@@ -163,6 +163,30 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func confirmDeleteCategory(at indexPath: IndexPath) {
+        let category = categories[indexPath.row]
+        
+        if let documentSet = category.documents, documentSet.count > 0 {
+            // confirm deletion
+            let name = category.name ?? "Category"
+            let alert = UIAlertController(title: "Delete Category", message: "\(name) contains documents. Do you want to delete it?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: {
+                (alertAction) -> Void in
+                // handle cancellation of deletion
+                self.categoriesTableView.reloadData()
+            }))
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: {
+                (alertAction) -> Void in
+                // handle deletion here
+                self.deleteCategory(at: indexPath)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            deleteCategory(at: indexPath)
+        }
+    }
+    
     // https://cocoacasts.com/core-data-relationships-and-delete-rules
     // Delete rules need to be put in place in the entity editor.
     // When a category is deleted, the documents associated with the category are to be deleted.
@@ -221,7 +245,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
             action, index in
-            self.deleteCategory(at: indexPath)
+            self.confirmDeleteCategory(at: indexPath)
         }
         
         let edit = UITableViewRowAction(style: .default, title: "Edit") {
