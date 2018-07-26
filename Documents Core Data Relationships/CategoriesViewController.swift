@@ -17,7 +17,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Categories"
+        title = "Trips"
     }
     
     override func viewWillAppear(_ animated: Bool) {
