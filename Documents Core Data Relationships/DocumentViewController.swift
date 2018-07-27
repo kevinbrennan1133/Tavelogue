@@ -8,10 +8,11 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController {
+class DocumentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
+    @IBOutlet weak var imagePicked: UIImageView!
     var document: Document?
     var category: Category?
     
@@ -40,6 +41,29 @@ class DocumentViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func openCameraButton(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera;
+            imagePicker.allowsEditing = false
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    @IBAction func openPhotoLibraryButton(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imagePicked.image = image
+        dismiss(animated:true, completion: nil)
+    }
     @IBAction func save(_ sender: Any) {
         guard let name = nameTextField.text else {
             alertNotifyUser(message: "Document not saved.\nThe name is not accessible.")

@@ -217,24 +217,50 @@
                                     <action selector="nameChanged:" destination="Gf6-Px-oBI" eventType="editingChanged" id="moe-Ab-7Av"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-37-9ir">
-                                <rect key="frame" x="16" y="115" width="343" height="552"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-37-9ir">
+                                <rect key="frame" x="16" y="285" width="343" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vD6-uU-0HE">
+                                <rect key="frame" x="16" y="108" width="95" height="30"/>
+                                <state key="normal" title="Open Camera"/>
+                                <connections>
+                                    <action selector="openCameraButton:" destination="Gf6-Px-oBI" eventType="touchUpInside" id="1EG-TQ-DU0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdL-lA-fmR">
+                                <rect key="frame" x="119" y="108" width="89" height="30"/>
+                                <state key="normal" title="Open Library"/>
+                                <connections>
+                                    <action selector="openPhotoLibraryButton:" destination="Gf6-Px-oBI" eventType="touchUpInside" id="2At-X9-Jgj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-ZW-c4c">
+                                <rect key="frame" x="16" y="146" width="343" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dpR-37-9ir" firstAttribute="top" secondItem="vHf-jd-7mv" secondAttribute="bottom" constant="15" id="5m1-Ze-KEA"/>
+                            <constraint firstItem="t3f-ZW-c4c" firstAttribute="leading" secondItem="ahP-2W-uZX" secondAttribute="leading" constant="16" id="4yY-PE-HU4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="vHf-jd-7mv" secondAttribute="leading" id="8dO-iu-Ase"/>
-                            <constraint firstItem="ahP-2W-uZX" firstAttribute="bottom" secondItem="dpR-37-9ir" secondAttribute="bottom" id="H2b-Y9-Uu9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dpR-37-9ir" secondAttribute="trailing" id="Ilb-a6-Dmk"/>
+                            <constraint firstItem="ahP-2W-uZX" firstAttribute="bottom" secondItem="dpR-37-9ir" secondAttribute="bottom" constant="9" id="9Fh-ll-fL4"/>
+                            <constraint firstItem="dpR-37-9ir" firstAttribute="leading" secondItem="ahP-2W-uZX" secondAttribute="leading" constant="16" id="ATJ-ex-XoQ"/>
+                            <constraint firstItem="KdL-lA-fmR" firstAttribute="top" secondItem="6Xf-wB-oxy" secondAttribute="bottom" constant="4" id="EsR-Ad-PqD"/>
+                            <constraint firstItem="ahP-2W-uZX" firstAttribute="trailing" secondItem="dpR-37-9ir" secondAttribute="trailing" constant="16" id="HDf-6M-z9F"/>
+                            <constraint firstItem="ahP-2W-uZX" firstAttribute="trailing" secondItem="KdL-lA-fmR" secondAttribute="trailing" constant="167" id="P51-M0-RnP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Xf-wB-oxy" secondAttribute="trailing" id="Q1J-wl-Igq"/>
-                            <constraint firstItem="dpR-37-9ir" firstAttribute="leading" secondItem="zID-Do-Uua" secondAttribute="leadingMargin" id="ZKQ-jN-MqI"/>
+                            <constraint firstItem="t3f-ZW-c4c" firstAttribute="top" secondItem="vD6-uU-0HE" secondAttribute="bottom" constant="8" id="aSs-8p-qNT"/>
+                            <constraint firstItem="dpR-37-9ir" firstAttribute="top" secondItem="t3f-ZW-c4c" secondAttribute="bottom" constant="13" id="bFh-Bf-8A5"/>
+                            <constraint firstItem="ahP-2W-uZX" firstAttribute="trailing" secondItem="t3f-ZW-c4c" secondAttribute="trailing" constant="16" id="c6T-v9-mHU"/>
+                            <constraint firstItem="KdL-lA-fmR" firstAttribute="leading" secondItem="vD6-uU-0HE" secondAttribute="trailing" constant="8" id="coD-cP-jdK"/>
                             <constraint firstItem="6Xf-wB-oxy" firstAttribute="leading" secondItem="vHf-jd-7mv" secondAttribute="trailing" constant="8" id="e8c-fA-JKJ"/>
                             <constraint firstItem="vHf-jd-7mv" firstAttribute="top" secondItem="zID-Do-Uua" secondAttribute="topMargin" constant="15" id="fvH-3J-BVu"/>
+                            <constraint firstItem="vD6-uU-0HE" firstAttribute="leading" secondItem="ahP-2W-uZX" secondAttribute="leading" constant="16" id="fxw-FJ-Yaf"/>
+                            <constraint firstItem="t3f-ZW-c4c" firstAttribute="top" secondItem="KdL-lA-fmR" secondAttribute="bottom" constant="8" id="hIG-Bi-ex6"/>
                             <constraint firstItem="6Xf-wB-oxy" firstAttribute="centerY" secondItem="vHf-jd-7mv" secondAttribute="centerY" id="saH-IE-0sG"/>
+                            <constraint firstItem="vD6-uU-0HE" firstAttribute="top" secondItem="6Xf-wB-oxy" secondAttribute="bottom" constant="4" id="uMD-99-hoI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ahP-2W-uZX"/>
                     </view>
@@ -247,12 +273,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="dpR-37-9ir" id="Zp4-iL-43v"/>
+                        <outlet property="imagePicked" destination="t3f-ZW-c4c" id="CxS-EI-Z8J"/>
                         <outlet property="nameTextField" destination="6Xf-wB-oxy" id="pxW-kC-9Ne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8c-gD-huL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="125"/>
+            <point key="canvasLocation" x="1299.5" y="124.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
