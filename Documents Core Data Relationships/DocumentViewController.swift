@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class DocumentViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var nameTextField: UITextField!
@@ -15,12 +17,14 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var imagePicked: UIImageView!
     var document: Document?
     var category: Category?
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = ""
-        
+   
+
         if let document = document {
             let name = document.name
             nameTextField.text = name
@@ -42,6 +46,10 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func openCameraButton(_ sender: Any) {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("camera not supported by this device")
+            return
+        }
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -50,7 +58,18 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
             self.present(imagePicker, animated: true, completion: nil)
         }
     }
-    @IBAction func openPhotoLibraryButton(_ sender: Any) {
+@IBAction func openPhotoLibraryButton(_ sender: Any) {
+    guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
+        print("can't open photo library")
+        return
+    }
+    /*
+    imagePicker.sourceType = .photoLibrary
+    imagePicker.delegate = self
+    
+    present(imagePicker, animated: true)
+*/
+
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -58,11 +77,37 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
+ 
     }
-    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+ 
+  /*  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // get the image
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+        
+        // do something with it
         imagePicked.image = image
-        dismiss(animated:true, completion: nil)
+    }
+*/
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImageView {
+            imagePicked = possibleImage
+        } else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImageView {
+            imagePicked = possibleImage
+        } else {
+            return
+        }
+ 
+        // do something interesting here!
+      //  print(imagePicked.size)
+        
+     //   dismiss(animated: true)
+        
+        /*  let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imagePicked.image = image
+        dismiss(animated:true, completion: nil) */
     }
     @IBAction func save(_ sender: Any) {
         guard let name = nameTextField.text else {

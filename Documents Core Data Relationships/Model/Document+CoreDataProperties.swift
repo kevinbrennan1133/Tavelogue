@@ -12,6 +12,21 @@ import CoreData
 
 
 extension Document {
+   /* func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        defer {
+            picker.dismiss(animated: true)
+        }
+        
+        print(info)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        defer {
+            picker.dismiss(animated: true)
+        }
+        
+        print("did cancel")
+    }*/
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Document> {
         return NSFetchRequest<Document>(entityName: "Document")

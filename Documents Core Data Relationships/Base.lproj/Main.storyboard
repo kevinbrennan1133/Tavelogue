@@ -217,8 +217,8 @@
                                     <action selector="nameChanged:" destination="Gf6-Px-oBI" eventType="editingChanged" id="moe-Ab-7Av"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-37-9ir">
-                                <rect key="frame" x="16" y="285" width="343" height="371"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dpR-37-9ir">
+                                <rect key="frame" x="16" y="287" width="343" height="371"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -237,8 +237,12 @@
                                     <action selector="openPhotoLibraryButton:" destination="Gf6-Px-oBI" eventType="touchUpInside" id="2At-X9-Jgj"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-ZW-c4c">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t3f-ZW-c4c">
                                 <rect key="frame" x="16" y="146" width="343" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="LYJ-tx-Sk5"/>
+                                    <constraint firstAttribute="height" constant="128" id="TrB-J0-5O7"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
