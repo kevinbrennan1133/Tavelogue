@@ -28,6 +28,7 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
         if let document = document {
             let name = document.name
             nameTextField.text = name
+            
             contentTextView.text = document.content
             title = name
         }
@@ -154,3 +155,23 @@ class DocumentViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
 }
+
+/*extension DocumentViewController: UI {
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        defer {
+            picker.dismiss(animated: true)
+        }
+        
+        print(info)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        defer {
+            picker.dismiss(animated: true)
+        }
+        
+        print("did cancel")
+    }
+}
+*/
